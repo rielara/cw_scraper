@@ -1,0 +1,10 @@
+{
+    "email" : "youremail@ttt.com",
+    "password" : "yourpassword",
+    "keywords" : "Fullstack Software Developer",
+    "location" : "London",
+    "driver_path" : "path to your chrome driver",
+    "geckodriver_path" : "path to your gecko driver"
+    
+}
+
