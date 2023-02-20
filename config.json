@@ -1,10 +1,10 @@
 {
     "email" : "youremail@ttt.com",
     "password" : "yourpassword",
-    "keywords" : "Fullstack Software Developer",
-    "location" : "London",
-    "driver_path" : "path to your chrome driver",
-    "geckodriver_path" : "path to your gecko driver"
+    "keywords" : "ex: Fullstack Software Developer",
+    "location" : "ex: London",
+    "driver_path" : "path to your chrome driver or any other driver you want to use / you can only use one driver at a time",
+    "geckodriver_path" : "path to your gecko driver or any other driver you want to use / I used two drivers because I had some issues with the chrome driver"
     
 }
 
