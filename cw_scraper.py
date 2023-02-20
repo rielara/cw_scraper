@@ -74,20 +74,27 @@ class CW_Automation():
     # create an empty list to store job posting URLs
         job_links = []
 
-    # loop through all pages of search results
-        for i in range(1, num_pages + 1):
-        # navigate to the current page of search results
-            if i > 1:
-                self.driver.get(self.driver.current_url + f"&page={i}")
+    # Loop through all pages of search results
+    #     for i in range(1, num_pages + 1):
+    #     # navigate to the current page of search results
+    #         if i > 1:
+    #             self.driver.get(self.driver.current_url + f"&page={i}")
 
-        # find all the job links on the current page and append them to the job_links list
-        job_links.extend([link.get_attribute("href") for link in self.driver.find_elements(By.CSS_SELECTOR, ".job__title > a")])
+    # Find all the job links on the current page and append them to the job_links list
+    # Find all job links on the page
+        job_elements = self.driver.find_elements(By.CSS_SELECTOR, '.job-title > a')
+        for element in job_elements:
+            job_links.append(element.get_attribute('href'))
+        
+        # # find all the job links on the current page and append them to the job_links list
+        # job_links.extend([link.get_attribute("href") for link in self.driver.find_elements(By.CSS_SELECTOR, ".job__title > a")])
 
     # write the job links to a text file
         with open("job_links.txt", "w") as f:
             for link in job_links:
                 f.write(link + "\n")
-
+                print(f"{len(job_links)} job links saved to {job_links.txt}")
+                
 
 if __name__ == '__main__':
     with open('config.json') as config_file:
