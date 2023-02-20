@@ -2,9 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import time
-import re
 import json
-
 
 
 class CW_Automation():
@@ -20,11 +18,6 @@ class CW_Automation():
         # self.driver = webdriver.Chrome(executable_path=data['chromedriver_path'])
         self.driver = webdriver.Chrome(data['driver_path'])
         self.login_cw()
-
-
-        
-        
-        
 
     def login_cw(self):
         """Login to CW Jobs"""
@@ -68,33 +61,35 @@ class CW_Automation():
         time.sleep(2)
 
     def find_offers(self):
-    # find the total number of pages of search results
-        num_pages = int(self.driver.find_element(By.CLASS_NAME, "resultlist-17jh0r6").text)
+        # find the total number of pages of search results
+        num_pages = int(self.driver.find_element(
+            By.CLASS_NAME, "resultlist-17jh0r6").text)
 
     # create an empty list to store job posting URLs
         job_links = []
 
-    # Loop through all pages of search results
+    # Loop through all pages of search results // uncomment code below if you want to scrape all pages
     #     for i in range(1, num_pages + 1):
     #     # navigate to the current page of search results
     #         if i > 1:
     #             self.driver.get(self.driver.current_url + f"&page={i}")
 
     # Find all the job links on the current page and append them to the job_links list
-    # Find all job links on the page
-        job_elements = self.driver.find_elements(By.CSS_SELECTOR, '.job-title > a')
+        job_elements = self.driver.find_elements(
+            By.CSS_SELECTOR, '.job-title > a')
         for element in job_elements:
             job_links.append(element.get_attribute('href'))
-        
-        # # find all the job links on the current page and append them to the job_links list
+
+        # Find all the job links on the current page and append them to the job_links list // in case you want to scrape all pages
         # job_links.extend([link.get_attribute("href") for link in self.driver.find_elements(By.CSS_SELECTOR, ".job__title > a")])
 
     # write the job links to a text file
         with open("job_links.txt", "w") as f:
             for link in job_links:
                 f.write(link + "\n")
-                print(f"{len(job_links)} job links saved to {job_links.txt}")
-                
+                print(f"{len(job_links)} job links saved to job_links.txt")
+            
+
 
 if __name__ == '__main__':
     with open('config.json') as config_file:
