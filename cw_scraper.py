@@ -4,12 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 import time
 import json
-import os 
 
-if os.access('C:/Users/44730/Desktop/cw', os.W_OK):
-    print("You have write permissions to this directory.")
-else:
-    print("You don't have write permissions to this directory.")
 
 
 class CW_Automation():
