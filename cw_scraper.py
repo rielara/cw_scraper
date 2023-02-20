@@ -1,8 +1,15 @@
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
 import time
 import json
+import os 
+
+if os.access('C:/Users/44730/Desktop/cw', os.W_OK):
+    print("You have write permissions to this directory.")
+else:
+    print("You don't have write permissions to this directory.")
 
 
 class CW_Automation():
@@ -66,8 +73,8 @@ class CW_Automation():
 
     # create an empty list to store job posting URLs
         job_links = []
-        job_elements = self.driver.find_elements(By.CSS_SELECTOR, '.job-title > a')
-        time.sleep(2)
+        job_elements = self.driver.find_elements(By.CSS_SELECTOR, '.stst-rlr .XYhOB')
+        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '.stst-rlr .XYhOB')))
         for element in job_elements:
             job_links.append(element.get_attribute('href'))
 
