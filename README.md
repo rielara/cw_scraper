@@ -12,4 +12,6 @@ Make sure you have the right drivers for your web browser or else it won't work.
 
 >You can get the latest version of your browser in settings -> about Chrome (if you're using chrome). 
 >
-> The chrome driver can be downloaded [here](https://chromedriver.chromium.org/downloads)
+> The Chrome driver (Chromium) can be downloaded [here](https://chromedriver.chromium.org/downloads)
+>
+> The Firefox's Gecko driver can be downloaded [here](https://github.com/mozilla/geckodriver/releases)
